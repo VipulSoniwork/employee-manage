@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Training Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation sidebar will be injected here -->
+        <div id="nav-placeholder"></div>
+
+        <!-- Main Content -->
+        <div id="main-content">
+            <div class="header-curve"></div>
+            <button class="back-btn" id="backButton"><i class="fas fa-arrow-left"></i> Back</button>
+            <h1 class="page-title">Annual Training Planner</h1>
+            <div class="form-container">
+                <!-- Year and Department Section -->
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Training Planner for the Year</label>
+                            <div class="input-with-icon">
+                                <input type="text" class="form-control" value="2025" readonly>
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Name of Department</label>
+                            <div class="input-with-icon">
+                                <input type="text" class="form-control" value="Production" readonly>
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Sub-Department Name</label>
+                            <div class="input-with-icon">
+                                <input type="text" class="form-control" value="Nylon" readonly>
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Training Schedule Table -->
+                <div class="table-container annual-training-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>S. No.</th>
+                                <th>Title of document with reference document number</th>
+                                <th colspan="12">Month</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Jan</th>
+                                <th>Feb</th>
+                                <th>Mar</th>
+                                <th>Apr</th>
+                                <th>May</th>
+                                <th>Jun</th>
+                                <th>Jul</th>
+                                <th>Aug</th>
+                                <th>Sep</th>
+                                <th>Oct</th>
+                                <th>Nov</th>
+                                <th>Dec</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>Process flowchart for NN media (PR/MEM/SOP/08/PFC-01)</td>
+                                <td></td>
+                                <td></td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>Process flowchart for NN membrane (PR/MEM/SOP/08/PFC-02)</td>
+                                <td></td>
+                                <td></td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>Produce for dope prepration for membrane & media (PR/MEM/SOP/08)</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>Control chart for dope making of membrane & media (PR/MEM/SOP/08/CC-01)</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>Produce for casting extraction of NN membrane (PR/MEM/SOP/09)</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>06</td>
+                                <td>Control chart for dope casting of NN membrane (PR/MEM/SOP/09/CC-01)</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Signature Table -->
+                <div class="signature-table-container">
+                    <table class="signature-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Signature</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Prepared by</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Reviewed by</td>
+                                <td></td>
+                                <td>Rajesh Singhal</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>QA Approved by</td>
+                                <td>Priya Pal</td>
+                                <td>Masuri</td>
+                                <td>26-12-24</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Buttons -->
+                <div class="button-row">
+                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-secondary">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back button functionality
+            const backButton = document.getElementById('backButton');
+            if (backButton) {
+                backButton.addEventListener('click', function() {
+                    window.location.href = 'annual-training.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

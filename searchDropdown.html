@@ -1,0 +1,68 @@
+
+<div>
+            <label for="searchInput">Catalogue Number</label>
+            <input type="text" id="searchInput"  placeholder="Search catalogueNumber"  name="searchInput" required>
+            <ul id="suggestions" class="suggestions"></ul>
+        </div>
+
+
+document.addEventListener("click", (event) => {
+        const searchInput = document.getElementById("searchInput");
+        const suggestionsList = document.getElementById("suggestions");
+
+        // Check if the click happened outside the search input or suggestions list
+        if (!searchInput.contains(event.target) && !suggestionsList.contains(event.target)) {
+            suggestionsList.innerHTML = ""; // Clear the dropdown
+            suggestionsList.classList.remove("visible"); // Hide the dropdown
+        }
+    });
+
+    document.getElementById("searchInput").addEventListener("input", (event) => {
+           const query = event.target.value;
+           if (query.length > 0) {
+               fetchSearchResults(query); // Call backend for suggestions
+           } else {
+               document.getElementById("suggestions").innerHTML = ""; // Clear suggestions if empty
+           }
+       });
+
+   function fetchSearchResults(query) {
+           if (typeof javaConnector !== "undefined") {
+               // Call Java backend and get results
+               const results = javaConnector.search(query);
+
+               // Update dropdown with results
+               updateSuggestions(JSON.parse(results)); // Assume Java returns a JSON string
+           } else {
+               updateSuggestions([]);
+               console.error("Java backend is not connected.");
+           }
+       }
+
+
+       function updateSuggestions(results) {
+           const suggestionsList = document.getElementById("suggestions");
+           suggestionsList.innerHTML = ""; // Clear previous suggestions
+           if (results.length === 0) {
+               // Hide the dropdown if no results
+               suggestionsList.classList.remove("visible");
+               return;
+           }
+
+           // Add results to the dropdown
+           results.forEach(result => {
+               const li = document.createElement("li");
+               li.textContent = result;
+               li.addEventListener("click", () => {
+                   document.getElementById("searchInput").value = result;
+                   suggestionsList.innerHTML = ""; // Clear suggestions
+                   suggestionsList.classList.remove("visible"); // Hide the dropdown
+                   document.getElementById("catalogueNumber").value = result;
+               });
+                suggestionsList.appendChild(li);
+                const liWidth = li.offsetWidth;
+           });
+
+           // Show the dropdown if there are results
+           suggestionsList.classList.add("visible");
+    }

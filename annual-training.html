@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Training</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation sidebar will be injected here -->
+        <div id="nav-placeholder"></div>
+
+        <!-- Main Content -->
+        <div id="main-content">
+            <div class="header-curve"></div>
+            <h1 class="page-title">Annual Training</h1>
+            <div class="form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Training Planner for the Year</label>
+                        <div class="input-with-icon">
+                            <input type="text" class="form-control" value="2025">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Training Title</label>
+                        <div class="input-with-icon">
+                            <input type="text" class="form-control" value="Process flowchart for NN Media (PR/MEM/SOP/08/PFC-02)">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Training Month</label>
+                        <div class="input-with-icon">
+                            <input type="text" class="form-control" value="March">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: right; margin-top: 20px;">
+                    <button class="add-btn">Add</button>
+                </div>
+                
+                <div class="trainings-section">
+                    <div class="trainings-header">
+                        <div class="trainings-title">Trainings</div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Training Title</th>
+                                    <th>Training Month</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01</td>
+                                    <td>Control Chart for Dope making filtration storage</td>
+                                    <td>April</td>
+                                    <td style="text-align: center;"><button class="remove-btn"><i class="fas fa-minus-circle"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>02</td>
+                                    <td>Produce for casting extractions, Lamination for NN Membrane</td>
+                                    <td>May</td>
+                                    <td style="text-align: center;"><button class="remove-btn"><i class="fas fa-minus-circle"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>03</td>
+                                    <td>Control chart for dope casting of NN Membrane</td>
+                                    <td>May</td>
+                                    <td style="text-align: center;"><button class="remove-btn"><i class="fas fa-minus-circle"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>04</td>
+                                    <td>Produce for Z-Treatment of NN Membrane</td>
+                                    <td>July</td>
+                                    <td style="text-align: center;"><button class="remove-btn"><i class="fas fa-minus-circle"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="form-row" style="margin-top: 20px;">
+                    <div class="form-group">
+                        <label class="form-label">Prepared By</label>
+                        <div class="input-with-icon">
+                            <input type="text" class="form-control" value="Pawan Pal">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Reviewed By</label>
+                        <div class="input-with-icon">
+                            <input type="text" class="form-control" value="">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">QA Approved By</label>
+                        <div class="input-with-icon">
+                            <input type="text" class="form-control" value="">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: left; margin-top: 20px;">
+                    <button id="saveButton" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener for the save button
+            const saveButton = document.getElementById('saveButton');
+            if (saveButton) {
+                saveButton.addEventListener('click', function() {
+                    // Get form data
+                    const trainingYear = document.querySelector('input[value="2025"]').value;
+                    const trainingTitle = document.querySelector('input[value="Process flowchart for NN Media (PR/MEM/SOP/08/PFC-02)"]').value;
+                    const preparedBy = document.querySelector('input[value="Pawan Pal"]').value;
+
+                    // Create planner entry
+                    const plannerEntry = {
+                        trainingType: 'Annual Training',
+                        plannerType: trainingTitle,
+                        employees: '3112', // Example value
+                        department: 'QA',
+                        subDepartment: '-NA-',
+                        year: trainingYear,
+                        preparedBy: preparedBy
+                    };
+
+                    // Get existing entries from localStorage or initialize empty array
+                    let plannerEntries = JSON.parse(localStorage.getItem('plannerEntries') || '[]');
+                    
+                    // Add new entry
+                    plannerEntries.push(plannerEntry);
+                    
+                    // Save back to localStorage
+                    localStorage.setItem('plannerEntries', JSON.stringify(plannerEntries));
+
+                    // Redirect to planner page
+                    window.location.href = 'planner.html';
+                });
+            }
+
+            // Populate training titles dropdown
+            const trainingTitles = [
+                'Process flowchart for NN Media (PR/MEM/SOP/08/PFC-02)',
+                'Control Chart for Dope making filtration storage',
+                'Produce for casting extractions, Lamination for NN Membrane',
+                'Control chart for dope casting of NN Membrane',
+                'Produce for Z-Treatment of NN Membrane'
+            ];
+
+            const trainingTitleInput = document.querySelector('input[value="Process flowchart for NN Media (PR/MEM/SOP/08/PFC-02)"]');
+            if (trainingTitleInput) {
+                const dropdown = document.createElement('select');
+                dropdown.className = 'form-control';
+                trainingTitles.forEach(title => {
+                    const option = document.createElement('option');
+                    option.value = title;
+                    option.textContent = title;
+                    dropdown.appendChild(option);
+                });
+                trainingTitleInput.parentNode.replaceChild(dropdown, trainingTitleInput);
+            }
+        });
+    </script>
+</body>
+</html> 

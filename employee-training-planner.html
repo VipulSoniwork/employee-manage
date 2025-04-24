@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Training Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation sidebar will be injected here -->
+        <div id="nav-placeholder"></div>
+
+        <!-- Main Content -->
+        <div id="main-content">
+            <div class="header-curve"></div>
+            <button class="back-btn" id="backButton"><i class="fas fa-arrow-left"></i> Back</button>
+            <h1 class="page-title">Employee Training Planner</h1>
+            <div class="form-container">
+                <!-- Employee Information Section -->
+                <div class="employee-info">
+                    <div class="info-row">
+                        <div class="info-group">
+                            <label>Name :</label>
+                            <span>Shubham Kumar</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Father Name :</label>
+                            <span>Sh.Satish Kumar</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Education Qualification :</label>
+                            <span>12th</span>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-group">
+                            <label>Designation :</label>
+                            <span>QA Supervisor</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Department :</label>
+                            <span>QA</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Sub Department :</label>
+                            <span>-NA-</span>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-group">
+                            <label>Date of Joining :</label>
+                            <span>01-02-2023</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Employee Code :</label>
+                            <span>3119</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Remarks :</label>
+                            <span>-NA-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Table -->
+                <div class="table-container training-records-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">S. No.</th>
+                                <th rowspan="2">Date of Training</th>
+                                <th rowspan="2">Training Title</th>
+                                <th rowspan="2">Reference Document No.</th>
+                                <th rowspan="2">Trainer Name</th>
+                                <th colspan="3">Training Type</th>
+                                <th colspan="4">Evaluation Status</th>
+                            </tr>
+                            <tr>
+                                <th>Oral</th>
+                                <th>Written</th>
+                                <th>Practical</th>
+                                <th>Marks Obtained</th>
+                                <th>Pass</th>
+                                <th>Fail</th>
+                                <th>Evaluated by</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>03-12-24</td>
+                                <td>Produce for labeling of Status for semi-finished</td>
+                                <td>QA/SOP/14 RW-00</td>
+                                <td>Sahil Bhushan</td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td>-NA-</td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td>Sahil Bhushan</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>05-12-24</td>
+                                <td>Produce on Standard Operating</td>
+                                <td>QA/SOP/03 RW-02</td>
+                                <td>Sahil Bhushan</td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td>-NA-</td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td>Sahil Bhushan</td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>12-12-24</td>
+                                <td>Monitering of Non-Variable of Classified Area</td>
+                                <td>QA/SOP/31 RW-01</td>
+                                <td>Sahil Bhushan</td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td>-NA-</td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td>Sahil Bhushan</td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>14-12-24</td>
+                                <td>SOP for Analyst Qualification</td>
+                                <td>QA/SOP/43 RW-00</td>
+                                <td>Sahil Bhushan</td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td>-NA-</td>
+                                <td class="center-cell"><i class="fas fa-check"></i></td>
+                                <td class="center-cell"><i class="fas fa-times"></i></td>
+                                <td>Sahil Bhushan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Signature Section -->
+                <div class="signature-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Prepared By</label>
+                            <div class="input-with-icon">
+                                <input type="text" class="form-control" value="Pawan Pal">
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Reviewed By</label>
+                            <div class="input-with-icon">
+                                <input type="text" class="form-control" value="">
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">QA Approved By</label>
+                            <div class="input-with-icon">
+                                <input type="text" class="form-control" value="">
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="button-row">
+                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-secondary">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+            // Back button functionality
+            const backButton = document.getElementById('backButton');
+            if (backButton) {
+                backButton.addEventListener('click', function() {
+                    window.location.href = 'employee-training.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

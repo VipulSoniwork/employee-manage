@@ -1,0 +1,330 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(207, 207, 207);
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 80px;
+    min-height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    margin-bottom: 2rem;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 70px;
+    transition: color 0.2s ease;
+}
+
+.nav-item i {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.nav-item .nav-text {
+    font-size: 0.65rem;
+    line-height: 1.2;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #1d6a34;
+}
+
+.nav-item:hover i, .nav-item.active i {
+    color: #1d6a34;
+}
+
+/* Main Content */
+#main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Header curve */
+.header-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 13rem;
+    background-color: #222;
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+    z-index: -1;
+}
+
+.page-title {
+    color: white;
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 2.5rem 0;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* Common Form Styles */
+.form-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 5rem auto 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    flex: 1;
+    background-color: rgb(207, 207, 207);
+    border-radius: 5px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #333;
+    padding: 0.5rem 0;
+}
+
+.form-control:focus {
+    outline: none;
+}
+
+/* Common Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #222;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+}
+
+/* Common Table Styles */
+.table-container {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.table th {
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+}
+
+.table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #eee;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Common Input Styles */
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Common Back Button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 2;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.back-btn i {
+    font-size: 1rem;
+}
+
+/* Common Responsive Styles */
+@media (max-width: 1200px) {
+    .form-container {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .form-row {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    
+    .table th, .table td {
+        padding: 0.75rem 1rem;
+    }
+    
+    .button-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .button-row .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #main-content {
+        padding: 1rem;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+        padding: 2rem 1rem;
+    }
+    
+    .back-btn {
+        top: 1rem;
+        left: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 60px;
+    }
+    
+    .nav-item {
+        width: 50px;
+    }
+    
+    .nav-item i {
+        font-size: 1.2rem;
+    }
+    
+    .nav-item .nav-text {
+        font-size: 0.6rem;
+    }
+    
+    .table-container {
+        margin: 1rem 0;
+    }
+    
+    .table th, .table td {
+        padding: 0.625rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+    
+    .form-container {
+        margin-top: 4rem;
+        padding: 1rem;
+    }
+}
+

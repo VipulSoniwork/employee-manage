@@ -1,0 +1,282 @@
+
+.training-selection-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-trainings {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.selected-item {
+    background-color: #e8f5e9;
+    color: #1d6a34;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+}
+
+.remove-training {
+    margin-left: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.remove-training:hover {
+    opacity: 0.7;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-selected {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-items {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.custom-select {
+    position: relative;  /* ✅ Ensure dropdown stays within container */
+    width: 100%;
+}
+
+.select-items {
+    position: absolute;  /* ✅ Prevent height changes */
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+/* For left alignment of selection pills */
+.selected-trainings, .selected-employees {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start; /* Explicitly align items to the left */
+    width: 100%; /* Ensure container takes full width */
+}
+
+/* Ensure parent containers only adjust height based on content */
+.training-selection-container, .employee-selection-container {
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Let height be determined by content */
+}
+
+/* Remove fixed height and make containers adjust based on content */
+.selected-trainings, .selected-employees {
+    min-height: auto; /* Override the fixed 40px min-height */
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.select-hide {
+    display: none;
+}
+
+.select-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.select-item:hover {
+    background-color: #f5f5f5;
+}
+
+.select-item input[type="checkbox"] {
+    margin: 0;
+}
+
+.select-item label {
+    margin: 0;
+    cursor: pointer;
+    flex: 1;
+}
+
+/* Employee Training Form Specific Styles */
+.employee-selection-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-employees {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;  /* ✅ Wrap items in a row */
+    gap: 8px;
+}
+
+
+.selected-employee {
+    background-color: #e8f5e9;
+    color: #1d6a34;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+}
+
+.remove-employee {
+    margin-left: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.remove-employee:hover {
+    opacity: 0.7;
+}
+
+/* Custom Select Dropdown Styles */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-selected {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-items {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.select-item:hover {
+    background-color: #f5f5f5;
+}
+
+.select-item input[type="checkbox"] {
+    margin: 0;
+}
+
+.select-item label {
+    margin: 0;
+    cursor: pointer;
+    flex: 1;
+}
+
+/* Selected Employees Display */
+.selected-employees {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.selected-employee {
+    background-color: #e8f5e9;
+    color: #1d6a34;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.remove-employee {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.remove-employee:hover {
+    opacity: 0.7;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .selected-employees {
+        flex-direction: column;
+    }
+    
+    .select-items {
+        max-height: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .select-selected {
+        padding: 6px 12px;
+    }
+    
+    .select-item {
+        padding: 6px 12px;
+    }
+    
+    .selected-employee {
+        padding: 3px 10px;
+        font-size: 0.8rem;
+    }
+} 

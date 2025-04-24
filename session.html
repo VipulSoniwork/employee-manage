@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation sidebar will be injected here -->
+        <div id="nav-placeholder"></div>
+
+        <!-- Main Content -->
+        <div id="main-content">
+            <div class="header-curve"></div>
+            <h1 class="page-title">Session Details</h1>
+            
+            
+            
+            
+            <div class="form-container">
+                <div class="actions-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Search with session details">
+                    </div>
+                    <button class="export-btn">
+                        <i class="fas fa-file-export"></i>
+                        Export
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date of Training</th>
+                                <th>Training Title</th>
+                                <th>Evaluation Status</th>
+                                <th>Evaluated By</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12-02-20</td>
+                                <td>Standard Operating</td>
+                                <td>Pass</td>
+                                <td>Sahil Bhushan</td>
+                                <td class="action-column">
+                                    <div class="action-links">
+                                        <a href="session-evaluate.html">Evaluate</a>
+                                        <a href="session-edit.html">Edit</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html> 

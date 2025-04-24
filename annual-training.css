@@ -1,0 +1,60 @@
+/* Annual Training Page Specific Styles */
+.trainings-section {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.trainings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background-color: #f8f8f8;
+    border-radius: 8px 8px 0 0;
+}
+
+.trainings-title {
+    font-size: 1.125rem;
+    color: #444;
+    font-weight: 600;
+}
+
+.add-btn {
+    background-color: transparent;
+    border: none;
+    color: #1d6a34;
+    cursor: pointer;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Annual Training Table */
+.annual-training-table {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.annual-training-table th,
+.annual-training-table td {
+    text-align: center;
+    padding: 0.75rem 0.875rem;
+    font-size: 0.8125rem;
+    min-width: 50px;
+}
+
+.annual-training-table th:nth-child(2),
+.annual-training-table td:nth-child(2) {
+    text-align: left;
+    min-width: 240px;
+}
+
+/* Annual Training Page Responsive Styles */
+@media (max-width: 576px) {
+    .trainings-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+    }
+} 

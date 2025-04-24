@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation sidebar will be injected here -->
+        <div id="nav-placeholder"></div>
+
+        <!-- Main Content -->
+        <div id="main-content">
+            <div class="header-curve"></div>
+            <h1 class="page-title">Planner</h1>
+            
+            
+            
+            
+            <div class="form-container">
+                <div class="actions-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Search with Training Planner type, department, year">
+                    </div>
+                    <button class="export-btn">
+                        <i class="fas fa-file-export"></i>
+                        Export
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="table planner-table">
+                        <thead>
+                            <tr>
+                                <th>Training Type</th>
+                                <th>Planner Type</th>
+                                <th>Employees</th>
+                                <th>Department</th>
+                                <th>Sub-Department</th>
+                                <th>Year</th>
+                                <th>Prepared by</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="plannerTableBody">
+                            <tr>
+                                <td>Annual Training</td>
+                                <td><a href="#" class="planner-name">Process flowchart for NN Media</a></td>
+                                <td>3112</td>
+                                <td>QA</td>
+                                <td>-NA-</td>
+                                <td>2025</td>
+                                <td>Pawan Pal</td>
+                                <td><button class="btn btn-secondary edit-btn">Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to populate the planner table
+            function populatePlannerTable() {
+                const plannerEntries = JSON.parse(localStorage.getItem('plannerEntries') || '[]');
+                const tableBody = document.getElementById('plannerTableBody');
+                
+                // Clear existing rows
+                tableBody.innerHTML = '';
+                
+                // Add entries to table
+                plannerEntries.forEach((entry, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${entry.trainingType}</td>
+                        <td><a href="#" class="planner-name">${entry.plannerType}</a></td>
+                        <td>${entry.employees}</td>
+                        <td>${entry.department}</td>
+                        <td>${entry.subDepartment}</td>
+                        <td>${entry.year}</td>
+                        <td>${entry.preparedBy}</td>
+                        <td>
+                            <button class="btn btn-secondary edit-btn" data-index="${index}">Edit</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+
+                    // Add click event for edit button
+                    const editBtn = row.querySelector('.edit-btn');
+                    editBtn.addEventListener('click', function() {
+                        const entryIndex = this.getAttribute('data-index');
+                        const entry = plannerEntries[entryIndex];
+                        
+                        // Store the current entry for editing
+                        localStorage.setItem('currentEditEntry', JSON.stringify(entry));
+                        
+                        // Redirect based on training type
+                        if (entry.trainingType === 'Annual Training') {
+                            window.location.href = 'annual-training-planner.html';
+                        } else {
+                            window.location.href = 'employee-training-planner.html';
+                        }
+                    });
+                });
+            }
+
+            // Initial population of table
+            populatePlannerTable();
+
+            // Add search functionality
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const rows = document.querySelectorAll('#plannerTableBody tr');
+                    
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        row.style.display = text.includes(searchTerm) ? '' : 'none';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
