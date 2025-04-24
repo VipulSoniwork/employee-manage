@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Training Record Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="employee-training.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation sidebar will be injected here -->
+        <div id="nav-placeholder"></div>
+
+        <!-- Main Content -->
+        <div id="main-content">
+            <div class="header-curve"></div>
+            <h1 class="page-title">Employee Training Record Form</h1>
+            <div class="form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Training Title</label>
+                        <div class="input-with-icon training-selection-container">
+                            <div class="custom-select">
+                                <div class="select-selected" id="trainingDropdown">
+                                    <span>Select Training Titles</span>
+                                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                                </div>
+                                <div class="select-items select-hide" id="trainingSelectItems">
+                                    <!-- Training items will be populated dynamically -->
+                                </div>
+                            </div>
+                            <div id="selectedTrainings" class="selected-trainings"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Employees</label>
+                        <div class="input-with-icon employee-selection-container">
+                            <div class="custom-select">
+                                <div class="select-selected" id="employeeDropdown">
+                                    <span>Select Employees</span>
+                                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                                </div>
+                                <div class="select-items select-hide" id="employeeSelectItems">
+                                    <!-- Employee items will be populated dynamically -->
+                                </div>
+                            </div>
+                            <div id="selectedEmployees" class="selected-employees"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Prepared By</label>
+                        <div class="input-with-icon">
+                            <select class="form-control" id="preparedBySelect">
+                                <!-- Prepared By options will be dynamically populated -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Trainer</label>
+                        <div class="input-with-icon">
+                            <select class="form-control" id="trainerSelect">
+                                <!-- Trainer options will be dynamically populated -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: left; margin-top: 20px;">
+                    <button id="saveButton" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Store for selected items
+            let selectedEmployees = new Set();
+            let selectedTrainings = new Set();
+            
+            // Elements
+            const employeeDropdown = document.getElementById('employeeDropdown');
+            const employeeSelectItems = document.getElementById('employeeSelectItems');
+            const selectedEmployeesDiv = document.getElementById('selectedEmployees');
+            
+            const trainingDropdown = document.getElementById('trainingDropdown');
+            const trainingSelectItems = document.getElementById('trainingSelectItems');
+            const selectedTrainingsDiv = document.getElementById('selectedTrainings');
+            
+            const preparedBySelect = document.getElementById('preparedBySelect');
+            const trainerSelect = document.getElementById('trainerSelect');
+            
+            // Fetch data from backend
+            async function fetchEmployees() {
+                try {
+                    const response = await javaConnector.getAllEmployee()
+
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch employees');
+                    }
+                    const employees = await response.json();
+                    return employees;
+                } catch (error) {
+                    console.error('Error fetching employees:', error);
+                    return [];
+                }
+            }
+            
+            async function fetchTrainingModules() {
+                try {
+                    const response = await javaConnector.getAllTrainers()
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch training modules');
+                    }
+                    const modules = await response.json();
+                    return modules;
+                } catch (error) {
+                    console.error('Error fetching training modules:', error);
+                    return [];
+                }
+            }
+            
+            // Initialize dropdowns with data from backend
+            async function initializeDropdowns() {
+                const employees = await fetchEmployees();
+                const trainingModules = await fetchTrainingModules();
+                
+                // Populate employee dropdown
+                populateEmployeeDropdown(employees);
+                
+                // Populate training dropdown
+                populateTrainingDropdown(trainingModules);
+                
+                // Populate prepared by and trainer dropdowns
+                populatePreparedByDropdown(employees);
+                populateTrainerDropdown(employees);
+                
+                // Setup dropdown functionality
+                setupDropdown(
+                    employeeDropdown, 
+                    employeeSelectItems, 
+                    selectedEmployeesDiv, 
+                    selectedEmployees, 
+                    'Select Employees'
+                );
+                
+                setupDropdown(
+                    trainingDropdown, 
+                    trainingSelectItems, 
+                    selectedTrainingsDiv, 
+                    selectedTrainings, 
+                    'Select Training Titles'
+                );
+            }
+            
+            function populateEmployeeDropdown(employees) {
+                employeeSelectItems.innerHTML = '';
+                var employeeDataResponses =employees.employeeDataResponses;
+                employeeDataResponses.forEach((employee, index) => {
+                    const fullName = `${employee.firstName} ${employee.lastName}`;
+                    const item = document.createElement('div');
+                    item.className = 'select-item';
+                    item.setAttribute('data-value', employee.id);
+                    
+                    item.innerHTML = `
+                        <input type="checkbox" id="emp${index}">
+                        <label for="emp${index}">${fullName}</label>
+
+                    employeeSelectItems.appendChild(item);
+                });
+            }
+            
+            function populateTrainingDropdown(modules) {
+                trainingSelectItems.innerHTML = '';
+
+                var getModulesList =modules.moduleResponseList;
+                getModulesList.forEach((module, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'select-item';
+                    item.setAttribute('data-value', module.id);
+                    
+                    item.innerHTML = `
+                        <input type="checkbox" id="training${index}">
+                        <label for="training${index}">${module.trainingTittle}</label>
+                    `;
+                    
+                    trainingSelectItems.appendChild(item);
+                });
+            }
+            
+            function populatePreparedByDropdown(employees) {
+                preparedBySelect.innerHTML = '';
+                
+                employees.forEach(employee => {
+                    const option = document.createElement('option');
+                    option.value = employee.id;
+                    option.textContent = `${employee.firstName} ${employee.lastName}`;
+                    preparedBySelect.appendChild(option);
+                });
+            }
+            
+            function populateTrainerDropdown(employees) {
+                trainerSelect.innerHTML = '';
+                
+                employees.forEach(employee => {
+                    const option = document.createElement('option');
+                    option.value = employee.id;
+                    option.textContent = `${employee.firstName} ${employee.lastName}`;
+                    trainerSelect.appendChild(option);
+                });
+            }
+            
+            function setupDropdown(dropdown, selectItems, selectedDiv, selectedSet, labelText) {
+                // Toggle dropdown
+                dropdown.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    selectItems.classList.toggle('select-hide');
+                    dropdown.classList.toggle('active');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function () {
+                    selectItems.classList.add('select-hide');
+                    dropdown.classList.remove('active');
+                });
+                
+                // Prevent dropdown from closing when clicking inside
+                selectItems.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+                
+                // Handle checkbox selection
+                const checkboxes = selectItems.querySelectorAll('.select-item input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', function () {
+                        const item = this.closest('.select-item');
+                        const value = item.getAttribute('data-value');
+                        const label = item.querySelector('label').textContent;
+                        
+                        if (this.checked) {
+                            selectedSet.add({ id: value, label: label });
+                        } else {
+                            selectedSet.forEach(entry => {
+                                if (entry.id === value) {
+                                    selectedSet.delete(entry);
+                                }
+                            });
+                        }
+                        updateSelectedItems(selectedDiv, selectedSet, dropdown, labelText);
+                    });
+                });
+            }
+            
+            function updateSelectedItems(selectedDiv, selectedSet, dropdown, labelText) {
+                selectedDiv.innerHTML = '';
+                
+                selectedSet.forEach(entry => {
+                    const tag = document.createElement('span');
+                    tag.className = 'selected-item';
+                    tag.innerHTML = `${entry.label} <span class="remove-item" data-value="${entry.id}">&times;</span>`;
+                    selectedDiv.appendChild(tag);
+                    
+                    // Remove functionality
+                    tag.querySelector('.remove-item').addEventListener('click', function () {
+                        const value = this.getAttribute('data-value');
+                        const checkbox = document.querySelector(`.select-item[data-value="${value}"] input`);
+                        if (checkbox) checkbox.checked = false;
+                        
+                        selectedSet.forEach(entry => {
+                            if (entry.id === value) {
+                                selectedSet.delete(entry);
+                            }
+                        });
+                        
+                        updateSelectedItems(selectedDiv, selectedSet, dropdown, labelText);
+                    });
+                });
+                
+                // Update dropdown text
+                const dropdownText = dropdown.querySelector('span');
+                if (selectedSet.size === 0) {
+                    dropdownText.textContent = labelText;
+                } else {
+                    dropdownText.textContent = `${selectedSet.size} Selected`;
+                }
+            }
+            
+            // Save button functionality
+            const saveButton = document.getElementById('saveButton');
+            saveButton.addEventListener('click', async function () {
+                if (selectedEmployees.size === 0 || selectedTrainings.size === 0) {
+                    alert('Please select at least one Employee and one Training Title.');
+                    return;
+                }
+                
+                const preparedById = preparedBySelect.value;
+                const trainerId = trainerSelect.value;
+                
+                // Prepare data for API request
+                const trainingAssignmentList = Array.from(selectedTrainings).map(training => {
+                    return {
+                        startDate: new Date().toISOString().split('T')[0], // Today's date as default
+                        trainer: { id: trainerId },
+                        trainingModule: { id: training.id },
+                        employeeList: Array.from(selectedEmployees).map(emp => ({ id: emp.id }))
+                    };
+                });
+                
+                const requestData = {
+                    trainingAssignmentList: trainingAssignmentList,
+                    employeeList: Array.from(selectedEmployees).map(emp => ({ id: emp.id })),
+                    plannerType: "Personal_Training_Record",
+                    trainer: { id: trainerId },
+                    preparedBy: { id: preparedById },
+                    // Assuming approvedBy and reviewedBy are optional or will be assigned later
+                };
+                
+                try {
+                    const response = await fetch('/api/personal-training-planner', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(requestData)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to save training plan');
+                    }
+                    
+                    const result = await response.json();
+                    console.log('Training plan saved successfully:', result);
+                    
+                    // Redirect to planner page
+                    window.location.href = 'planner.html';
+                    
+                } catch (error) {
+                    console.error('Error saving training plan:', error);
+                    alert('Failed to save training plan. Please try again.');
+                }
+            });
+            
+            // Initialize the form
+            initializeDropdowns();
+        });
+    </script>
+</body>
+</html>
